@@ -25,7 +25,7 @@ class DisciplinaController extends Controller {
         $regras = [
             'nome' => 'required|min:10|max:100',
             'curso' => 'required',
-            'carga' => 'required|min:1|max:3',
+            'carga' => 'required|min:1|max:12',
         ];
 
         $msg = [
@@ -71,7 +71,7 @@ class DisciplinaController extends Controller {
         $regras = [
             'nome' => 'required|min:10|max:100',
             'curso' => 'required',
-            'carga' => 'required|min:1|max:3',
+            'carga' => 'required|min:1|max:12',
         ];
 
         $msg = [

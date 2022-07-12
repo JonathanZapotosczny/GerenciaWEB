@@ -25,7 +25,7 @@ class ProfessorController extends Controller {
         $regras = [
             'ativo' => 'required',
             'nome' => 'required|min:10|max:100',
-            'email' => 'required|min:10|max:100',
+            'email' => 'required|min:15|max:250',
             'siape' => 'required|min:7|max:7',
             'eixo' => 'required',
         ];
@@ -75,7 +75,7 @@ class ProfessorController extends Controller {
         $regras = [
             'ativo' => 'required',
             'nome' => 'required|min:10|max:100',
-            'email' => 'required|min:10|max:100',
+            'email' => 'required|min:15|max:250',
             'siape' => 'required|min:7|max:7',
             'eixo' => 'required',
         ];

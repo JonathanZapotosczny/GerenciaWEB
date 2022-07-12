@@ -21,7 +21,7 @@ class EixoController extends Controller {
     public function store(Request $request) {
 
         $regras = [
-            'nome' => 'required|min:10|max:100',
+            'nome' => 'required|min:10|max:50',
         ];
 
         $msg = [
@@ -64,7 +64,7 @@ class EixoController extends Controller {
         }
 
         $regras = [
-            'nome' => 'required|min:10|max:100',
+            'nome' => 'required|min:10|max:50',
         ];
 
         $msg = [

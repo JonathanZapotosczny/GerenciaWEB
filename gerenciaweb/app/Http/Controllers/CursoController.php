@@ -23,8 +23,8 @@ class CursoController extends Controller {
     public function store(Request $request) {
 
         $regras = [
-            'nome' => 'required|min:10|max:100',
-            'sigla' => 'required|min:2|max:4',
+            'nome' => 'required|min:10|max:50',
+            'sigla' => 'required|min:2|max:8',
             'tempo' => 'required|min:1|max:2',
         ];
 
@@ -69,8 +69,8 @@ class CursoController extends Controller {
         }
 
         $regras = [
-            'nome' => 'required|min:10|max:100',
-            'sigla' => 'required|min:2|max:4',
+            'nome' => 'required|min:10|max:50',
+            'sigla' => 'required|min:2|max:8',
             'tempo' => 'required|min:1|max:2',
         ];
 

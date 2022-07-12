@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->integer('carga');
+            $table->unsignedBigInteger('id_curso');
+            $table->foreign('id_curso')->references('id')->on('cursos');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

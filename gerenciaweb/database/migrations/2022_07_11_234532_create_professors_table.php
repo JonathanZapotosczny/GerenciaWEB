@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->integer('siape');
+            $table->unsignedBigInteger('id_eixo');
+            $table->foreign('id_eixo')->references('id')->on('eixos');
+            $table->boolean('ativo');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
