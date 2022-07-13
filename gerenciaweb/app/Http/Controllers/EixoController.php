@@ -15,7 +15,7 @@ class EixoController extends Controller {
 
     public function create() {
 
-        return view('eixos.index');
+        return view('eixos.create');
     }
 
     public function store(Request $request) {

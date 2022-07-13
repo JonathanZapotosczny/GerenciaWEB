@@ -17,7 +17,7 @@ class ProfessorController extends Controller {
 
     public function create() {
 
-        return view('professores.index');
+        return view('professores.create');
     }
 
     public function store(Request $request) {

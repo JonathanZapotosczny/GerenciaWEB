@@ -10,14 +10,15 @@ class CursoController extends Controller {
 
     public function index() {
 
-        $dados = Curso::all();
-        $dadosEixo = Eixo::all();
-        return view('cursos.index', compact(['dados', 'dadosEixo']));
+        $dados[0] = Curso::all();
+        $dados[1] = Eixo::all();
+        return view('cursos.index', compact(['dados']));
     }
 
     public function create() {
-
-        return view('cursos.index');
+        
+        $eixo = Eixo::all();
+        return view('cursos.create', compact('eixo'));
     }
 
     public function store(Request $request) {
@@ -26,6 +27,7 @@ class CursoController extends Controller {
             'nome' => 'required|min:10|max:50',
             'sigla' => 'required|min:2|max:8',
             'tempo' => 'required|min:1|max:2',
+            'id_eixo' => 'required',
         ];
 
         $msg = [
@@ -40,6 +42,7 @@ class CursoController extends Controller {
             'nome' => mb_strtoupper($request->nome, 'UTF-8'),
             'sigla' => mb_strtoupper($request->sigla, 'UTF-8'),
             'tempo' => $request->tempo,
+            'id_eixo' => $request->id_eixo,
         ]);
 
         return redirect()->route('cursos.index');
@@ -72,6 +75,7 @@ class CursoController extends Controller {
             'nome' => 'required|min:10|max:50',
             'sigla' => 'required|min:2|max:8',
             'tempo' => 'required|min:1|max:2',
+            'id_eixo' => 'required',
         ];
 
         $msg = [
@@ -86,6 +90,7 @@ class CursoController extends Controller {
             'nome' => mb_strtoupper($request->nome, 'UTF-8'),
             'sigla' => mb_strtoupper($request->sigla, 'UTF-8'),
             'tempo' => $request->tempo,
+            'id_eixo' => $request->id_eixo,
         ]);
 
         $obj->save();

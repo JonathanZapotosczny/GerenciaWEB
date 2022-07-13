@@ -17,7 +17,7 @@ class DisciplinaController extends Controller {
 
     public function create() {
 
-        return view('disciplina.index');
+        return view('disciplina.create');
     }
 
     public function store(Request $request) {
