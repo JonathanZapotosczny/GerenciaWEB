@@ -10,24 +10,25 @@ class ProfessorController extends Controller {
 
     public function index() {
 
-        $dados = Professor::all();
-        $dadosEixo = Eixo::all();
-        return view('professores.index', compact(['dados', 'dadosEixo']));
+        $dados[0] = Professor::all();
+        $dados[1] = Eixo::all();
+        return view('professores.index', compact('dados'));
     }
 
     public function create() {
 
-        return view('professores.create');
+        $eixo = Eixo::all();
+        return view('professores.create', compact('eixo'));
     }
 
     public function store(Request $request) {
 
         $regras = [
-            'ativo' => 'required',
+            'status' => 'required',
             'nome' => 'required|min:10|max:100',
             'email' => 'required|min:15|max:250',
-            'siape' => 'required|min:7|max:7',
-            'eixo' => 'required',
+            'siape' => 'required|min:7|max:9',
+            'id_eixo' => 'required',
         ];
 
         $msg = [
@@ -39,14 +40,14 @@ class ProfessorController extends Controller {
         $request->validate($regras, $msg);
 
         Professor::create([
-            'ativo' => $request->ativo,
+            'status' => $request->status,
             'nome' => mb_strtoupper($request->nome, 'UTF-8'),
             'email' => mb_strtoupper($request->email, 'UTF-8'),
             'siape' => $request->siape,
-            'eixo' => mb_strtoupper($request->eixo, 'UTF-8'),
+            'id_eixo' => $request->id_eixo,
         ]);
 
-        return redirect()->route(professores.index);
+        return redirect()->route('professores.index');
     }
 
     public function show($id) {
@@ -56,12 +57,13 @@ class ProfessorController extends Controller {
     public function edit($id) {
 
         $dados = Professor::find($id);
+        $eixo = Eixo::all();
 
         if(!isset($dados)) {
             return "<h1> ID: $id não encontrado! </h1>";
         }
 
-        return view('Professores.edit', compact('dados'));
+        return view('professores.edit', compact('dados', 'eixo'));
     }
 
     public function update (Request $request, $id) {
@@ -73,11 +75,11 @@ class ProfessorController extends Controller {
         }
 
         $regras = [
-            'ativo' => 'required',
+            'status' => 'required',
             'nome' => 'required|min:10|max:100',
             'email' => 'required|min:15|max:250',
-            'siape' => 'required|min:7|max:7',
-            'eixo' => 'required',
+            'siape' => 'required|min:7|max:9',
+            'id_eixo' => 'required',
         ];
 
         $msg = [
@@ -89,11 +91,11 @@ class ProfessorController extends Controller {
         $request->validate($regras, $msg);
 
         $obj->fill([
-            'ativo' => $request->ativo,
+            'status' => $request->status,
             'nome' => mb_strtoupper($request->nome, 'UTF-8'),
             'email' => mb_strtoupper($request->email, 'UTF-8'),
             'siape' => $request->siape,
-            'eixo' => mb_strtoupper($request->eixo, 'UTF-8'),
+            'id_eixo' => $request->id_eixo,
         ]);
 
         $obj->save();

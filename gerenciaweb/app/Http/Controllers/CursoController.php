@@ -55,12 +55,13 @@ class CursoController extends Controller {
     public function edit($id) {
 
         $dados = Curso::find($id);
+        $eixo = Eixo::all();
 
         if(!isset($dados)) {
             return "<h1> ID: $id não encontrado! </h1>";
         }
 
-        return view('cursos.edit', compact('dados'));
+        return view('cursos.edit', compact('dados', 'eixo'));
     }
 
     public function update (Request $request, $id) {

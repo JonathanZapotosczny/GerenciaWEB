@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('email')->unique();
-            $table->integer('siape');
+            $table->string('siape');
             $table->unsignedBigInteger('id_eixo');
             $table->foreign('id_eixo')->references('id')->on('eixos');
-            $table->boolean('ativo');
+            $table->string('status');
             $table->timestamps();
             $table->softDeletes();
         });

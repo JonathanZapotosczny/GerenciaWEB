@@ -121,10 +121,10 @@
         </div>
     </div>
 
-    <!-- Bootstrap 5 / JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- JQuery / JS -->
+
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.mask.js') }}"></script>
 
     <script type="text/javascript">
 
@@ -157,6 +157,12 @@
             document.getElementById(form).submit();
             $("#removeModal").modal('hide')
         }
+    </script>
+
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            $('#siape').mask('000.000-0');
+        });
     </script>
 
     @yield('script')
