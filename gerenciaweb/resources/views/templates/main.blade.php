@@ -37,13 +37,14 @@
                                     <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                                     <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
                                 </svg>
-                                <span class="ps-1 text-white">Organização</span>
+                                <span class="ps-1 text-white">Menu</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{route('professores.index')}}" class="dropdown-item">Professores</a></li>
                                 <li><a href="{{route('disciplinas.index')}}" class="dropdown-item">Disciplinas</a></li>
                                 <li><a href="{{route('cursos.index')}}" class="dropdown-item">Cursos</a></li>
                                 <li><a href="{{route('eixos.index')}}" class="dropdown-item">Eixos</a></li>
+                                <li><a href="{{route('vinculos.index')}}" class="dropdown-item">Vínculos</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,13 +58,14 @@
                 </div>
                 @if(isset($rota))
                     <div class="col d-flex justify-content-end">
-                        <a href= "{{ route($rota) }}" class="btn btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFF" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <a href= "{{ route($rota) }}" style="cursor:pointer" class="btn btn-outline-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg>
                         </a>
                     </div>
                 @endif
+                
             </div>
             <hr>
             @yield('conteudo')
