@@ -26,7 +26,13 @@
                         <td class="d-none d-md-table-cell">{{ $eix['nome'] }}</td>
                         @endif
                     @endforeach
-                    <td class="d-none d-md-table-cell">{{ $item['status'] }}</td>
+
+                    @if($item['status'] === 1)
+                        <td class="d-none d-md-table-cell">ATIVO</td>
+                    @else
+                        <td class="d-none d-md-table-cell">INATIVO</td>
+                    @endif
+                    
                     <td>
                         <a href= "{{ route('professores.edit', $item['id']) }}" class="btn btn-outline-success">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">

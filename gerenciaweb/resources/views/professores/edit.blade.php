@@ -16,7 +16,7 @@
                 type="radio"
                 name="status"
                 id="ativo"
-                value="ATIVO"
+                value="1"
                 />
                     <label class="btn btn-outline-secondary" for="ativo">ATIVO</label>
                 
@@ -25,7 +25,7 @@
                 type="radio"
                 name="status"
                 id="inativo"
-                value="INATIVO"
+                value="0"
                 />
                     <label class="btn btn-outline-secondary" for="inativo">INATIVO</label>
 

@@ -39,7 +39,7 @@
                         @endforeach
                         @if($errors->has('id_disciplina'))
                         <div class='invalid-feedback'>
-                            {{ $errors->first('id_disciplinar') }}
+                            {{ $errors->first('id_disciplina') }}
                         </div>
                     @endif
                     </select>

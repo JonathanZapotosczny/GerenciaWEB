@@ -10,17 +10,16 @@ use App\Models\Vinculo;
 class VinculoController extends Controller {
     
     public function index() {
-
         $dados[0] = Vinculo::all();
-        $dados[1] = Professor::all();
+        $dados[1] = Professor::where('status' == true);
         $dados[2] = Disciplina::all();
-        return view('vinculos.index', compact(['dados']));
+        return view('vinculos.index', compact('dados'));
     }
 
     public function create() {
         
         $dados[0] = Vinculo::all();
-        $dados[1] = Professor::all();
+        $dados[1] = Professor::where('status', '=', 1)->get();
         $dados[2] = Disciplina::all();
         return view('vinculos.create', compact('dados'));
     }

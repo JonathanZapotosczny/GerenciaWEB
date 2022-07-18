@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('siape');
             $table->unsignedBigInteger('id_eixo');
             $table->foreign('id_eixo')->references('id')->on('eixos');
-            $table->string('status');
+            $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();
         });
