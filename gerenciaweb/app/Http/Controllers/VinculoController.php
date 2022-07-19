@@ -11,7 +11,7 @@ class VinculoController extends Controller {
     
     public function index() {
         $dados[0] = Vinculo::all();
-        $dados[1] = Professor::where('status' == true);
+        $dados[1] = Professor::where('status', '=', true)->get();
         $dados[2] = Disciplina::all();
         return view('vinculos.index', compact('dados'));
     }
@@ -51,15 +51,15 @@ class VinculoController extends Controller {
 
     public function edit($id) {
 
-        $dados[0] = Vinculo::find($id);
-        $dados[1] = Professor::all();
-        $dados[2] = Disciplina::all();
+        $dados = Vinculo::find($id);
+        $professor = Professor::all();
+        $disciplina = Disciplina::all();
 
         if(!isset($dados)) {
             return "<h1> ID: $id não encontrado! </h1>";
         }
 
-        return view('vinculos.edit', compact('dados'));
+        return view('vinculos.edit', compact('dados', 'professor', 'disciplina'));
     }
 
     public function update (Request $request, $id) {
