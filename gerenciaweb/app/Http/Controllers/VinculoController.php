@@ -26,6 +26,9 @@ class VinculoController extends Controller {
 
     public function store(Request $request) {
 
+        explode("_", $request);
+        explode("_", $request);
+
         $regras = [
             'id_professor' => 'required',
             'id_disciplina' => 'required',

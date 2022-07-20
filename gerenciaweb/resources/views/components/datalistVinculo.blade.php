@@ -18,32 +18,59 @@
         </tr>
         </thead>
         <tbody>
-            @foreach ($data[0] as $item)
+
+            <form action="{{ route('vinculos.store') }}" method="POST">
                 <tr>
-                    @foreach ($data[2] as $dis)
-                        @if($dis['id'] == $item['id_disciplina'])
-                        <td class="d-none d-md-table-cell">{{ $dis['nome'] }}</td>
-                    @endif
-                    @endforeach
-
-                    @foreach ($data[1] as $prof)
-                        @if($prof['id'] == $item['id_professor'])
-                        <td class="d-none d-md-table-cell">{{ $prof['nome'] }}</td>
-                    @endif
-                    @endforeach
-
+                    @foreach ($data[2] as $item2)
                     <td>
-                        <a href= "{{ route('vinculos.edit', $item['id']) }}" class="btn btn-outline-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
-                                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
-                            </svg>
-                        </a>
+                        <select name="id" class="form-control {{ $errors->has('id_disciplina') ? 'is-invalid' : '' }}">
+                            @foreach ($data[1] as $item)
+                            <option value="{{$item->id_disciplina}}_{{$item2->id_professor}}">
+                                {{ $item2->nome }}
+                            </option>
+                            @endforeach
+                            @if($errors->has('id_disciplina'))
+                            <div class='invalid-feedback'>
+                                {{ $errors->first('id_disciplina') }}
+                            </div>
+                            @endif
+                        </select>
                     </td>
-                    
+                    <td>
+                        <select name="id" class="form-control {{ $errors->has('id_professor') ? 'is-invalid' : '' }}">
+                            @foreach ($data[1] as $item)
+                            <option value="{{$item->id_disciplina}}_{{$item2->id_professor}}">
+                                {{ $item->nome }}
+                            </option>
+                            @endforeach
+                            @if($errors->has('id_professor'))
+                            <div class='invalid-feedback'>
+                                {{ $errors->first('id_professor') }}
+                            </div>
+                            @endif
+                        </select>
+                    </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+        </form>
+            <tfoot>
+                <td>
+                    <a href="{{route('vinculos.index')}}" class="btn btn-outline-danger btn-block align-content-center">
+                        &nbsp; Cancelar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                        </svg>
+                    </a>
 
+                    <a href="javascript:document.querySelector('form').submit();" class="btn btn-outline-success btn-block align-content-center">
+                        Cadastrar &nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
+                        </svg>
+                    </a>
+                </td>
+            </tfoot>
+    </table>
+        </tbody>
 </div>
