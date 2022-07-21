@@ -1,8 +1,7 @@
-<!-- Herda o layout padrão definido no template "main" -->
 @extends('templates.main', ['titulo' => "Alterar Professor(a)"])
-<!-- Preenche o conteúdo da seção "titulo" -->
+
 @section('titulo') Cursos @endsection
-<!-- Preenche o conteúdo da seção "conteudo" -->
+
 @section('conteudo')
 
 
