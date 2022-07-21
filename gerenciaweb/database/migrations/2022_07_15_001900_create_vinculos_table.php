@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up() {
         Schema::create('vinculos', function (Blueprint $table) {
+            
             $table->unsignedBigInteger('id_professor');
             $table->foreign('id_professor')->references('id')->on('professors');
             $table->unsignedBigInteger('id_disciplina');

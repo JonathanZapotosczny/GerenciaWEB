@@ -1,10 +1,8 @@
-<!-- Herda o layout padrão definido no template "main" -->
 @extends('templates.main', ['titulo' => "Novo Curso"])
-<!-- Preenche o conteúdo da seção "titulo" -->
-@section('titulo') Cursos @endsection
-<!-- Preenche o conteúdo da seção "conteudo" -->
-@section('conteudo')
 
+@section('titulo') Cursos @endsection
+
+@section('conteudo')
 
     <form action="{{ route('cursos.store') }}" method="POST">
         @csrf

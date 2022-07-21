@@ -1,8 +1,7 @@
-<!-- Herda o layout padrão definido no template "main" -->
 @extends('templates.main', ['titulo' => "Alterar Vínculo"])
-<!-- Preenche o conteúdo da seção "titulo" -->
+
 @section('titulo') Vínculos @endsection
-<!-- Preenche o conteúdo da seção "conteudo" -->
+
 @section('conteudo')
 
 

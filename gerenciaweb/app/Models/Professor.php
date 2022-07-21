@@ -11,5 +11,5 @@ class Professor extends Model {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['status','nome','email','siape','id_eixo'];
+    protected $fillable = ['status', 'nome', 'email' ,'siape' ,'id_eixo'];
 }

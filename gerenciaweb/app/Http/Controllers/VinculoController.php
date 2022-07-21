@@ -10,6 +10,7 @@ use App\Models\Vinculo;
 class VinculoController extends Controller {
     
     public function index() {
+
         $dados[0] = Vinculo::all();
         $dados[1] = Professor::where('status', '=', true)->get();
         $dados[2] = Disciplina::all();
@@ -26,27 +27,23 @@ class VinculoController extends Controller {
 
     public function store(Request $request) {
 
-
         $profs = $request->profs;
 
         foreach($profs as $item) {
 
-            $arr = explode("_", $item);
-            
-            Vinculo::where('id_disciplina', $arr[0])->forceDelete();
+            $array = explode("_", $item);
+            Vinculo::where('id_disciplina', $array[0])->forceDelete();
         }
 
         foreach($profs as $item) {
 
-            $arr = explode("_", $item);
+            $array = explode("_", $item);
             Vinculo::create([
-                'id_disciplina' => $arr[0],
-                'id_professor' => $arr[1],
+                'id_disciplina' => $array[0],
+                'id_professor' => $array[1],
             ]);
-            
         }
 
-        
         return redirect()->route('vinculos.index');
     }
 
@@ -56,50 +53,13 @@ class VinculoController extends Controller {
 
     public function edit($id) {
 
-        $dados = Vinculo::find($id);
-        $professor = Professor::all();
-        $disciplina = Disciplina::all();
-
-        if(!isset($dados)) {
-            return "<h1> ID: $id não encontrado! </h1>";
-        }
-
-        return view('vinculos.edit', compact('dados', 'professor', 'disciplina'));
     }
 
     public function update (Request $request, $id) {
 
-        $obj = Vinculo::find($id);
-
-        if(!isset($obj)) { 
-            return "<h1>ID: $id não encontrado! </h1>"; 
-        }
-
-        $regras = [
-            'id_professor' => 'required',
-            'id_disciplina' => 'required',
-        ];
-
-        $msg = [
-            "required" => "O campo [:attribute] é obrigatório!",
-        ];
-
-        $request->validate($regras, $msg);
-
-        $obj->fill([
-            'id_professor' => $request->id_professor,
-            'id_disciplina' => $request->id_disciplina,
-        ]);
-
-        $obj->save();
-
-        return redirect()->route('vinculos.index');
     }
 
     public function destroy($id) {
 
-        Vinculo::destroy($id);
-
-        return redirect()->route('vinculos.index');
     } 
 }

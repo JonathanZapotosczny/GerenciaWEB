@@ -34,7 +34,6 @@ class EixoController extends Controller {
 
         Eixo::create([
             'nome' => mb_strtoupper($request->nome, 'UTF-8'),
-            
         ]);
 
         return redirect()->route('eixos.index');

@@ -1,10 +1,8 @@
-<!-- Herda o layout padrão definido no template "main" -->
 @extends('templates.main', ['titulo' => "Nova Disciplina"])
-<!-- Preenche o conteúdo da seção "titulo" -->
-@section('titulo') Disciplinas @endsection
-<!-- Preenche o conteúdo da seção "conteudo" -->
-@section('conteudo')
 
+@section('titulo') Disciplinas @endsection
+
+@section('conteudo')
 
     <form action="{{ route('disciplinas.store') }}" method="POST">
         @csrf

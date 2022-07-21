@@ -11,5 +11,5 @@ class Disciplina extends Model {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['nome','id_curso','carga'];
+    protected $fillable = ['nome', 'id_curso', 'carga'];
 }

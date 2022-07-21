@@ -12,6 +12,7 @@ class Datalist extends Component {
     public $hide;
 
     public function __construct($crud, $header, $data, $hide) {
+        
         $this->crud = $crud;   
         $this->header = $header;
         $this->data = $data;    
@@ -19,6 +20,7 @@ class Datalist extends Component {
     }
     
     public function render() {
+
         return view('components.datalist');
     }
 }
