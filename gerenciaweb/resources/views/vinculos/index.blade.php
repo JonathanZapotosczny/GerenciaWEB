@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col">
             <x-datalistVinculo
-                :header="['DISCIPLINA', 'PROFESSORES', 'OPÇÕES']" 
+                :header="['DISCIPLINA', 'PROFESSORES']" 
                 :data="$dados"
-                :hide="[true, true, true]" 
+                :hide="[true, true]" 
             />
         </div>
     </div>

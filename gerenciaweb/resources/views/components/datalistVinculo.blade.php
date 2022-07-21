@@ -20,34 +20,32 @@
         <tbody>
 
             <form action="{{ route('vinculos.store') }}" method="POST">
+            @csrf
                 <tr>
                     @foreach ($data[2] as $item2)
                     <td>
-                        <select name="id" class="form-control {{ $errors->has('id_disciplina') ? 'is-invalid' : '' }}">
-                            @foreach ($data[1] as $item)
-                            <option value="{{$item->id_disciplina}}_{{$item2->id_professor}}">
-                                {{ $item2->nome }}
-                            </option>
-                            @endforeach
-                            @if($errors->has('id_disciplina'))
-                            <div class='invalid-feedback'>
-                                {{ $errors->first('id_disciplina') }}
-                            </div>
-                            @endif
-                        </select>
+                        {{ $item2->nome }}
                     </td>
                     <td>
-                        <select name="id" class="form-control {{ $errors->has('id_professor') ? 'is-invalid' : '' }}">
-                            @foreach ($data[1] as $item)
-                            <option value="{{$item->id_disciplina}}_{{$item2->id_professor}}">
-                                {{ $item->nome }}
-                            </option>
+                        <select name="profs[]" class="form-control {{ $errors->has('id_professor') ? 'is-invalid' : '' }}">
+                        @foreach ($data[1] as $item)
+                                @php $ip = 0 @endphp
+                                @foreach ($data[0] as $vin)    
+                                    @if($vin->id_disciplina == $item2->id)
+                                        @php $ip = $vin->id_professor @endphp
+                                    @endif
+                                @endforeach
+                                @if($ip == $item->id)
+                                    <option selected="true" value="{{$item2->id}}_{{$item->id}}">
+                                @else
+                                    <option value="{{$item2->id}}_{{$item->id}}">
+                                @endif
+
+                                    {{ $item->nome }}
+                                </option>
+
+
                             @endforeach
-                            @if($errors->has('id_professor'))
-                            <div class='invalid-feedback'>
-                                {{ $errors->first('id_professor') }}
-                            </div>
-                            @endif
                         </select>
                     </td>
                 </tr>

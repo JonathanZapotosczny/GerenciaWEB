@@ -26,25 +26,27 @@ class VinculoController extends Controller {
 
     public function store(Request $request) {
 
-        explode("_", $request);
-        explode("_", $request);
 
-        $regras = [
-            'id_professor' => 'required',
-            'id_disciplina' => 'required',
-        ];
+        $profs = $request->profs;
 
-        $msg = [
-            "required" => "O campo [:attribute] é obrigatório!",
-        ];
+        foreach($profs as $item) {
 
-        $request->validate($regras, $msg);
+            $arr = explode("_", $item);
+            
+            Vinculo::where('id_disciplina', $arr[0])->forceDelete();
+        }
 
-        Vinculo::create([
-            'id_professor' => $request->id_professor,
-            'id_disciplina' => $request->id_disciplina,
-        ]);
+        foreach($profs as $item) {
 
+            $arr = explode("_", $item);
+            Vinculo::create([
+                'id_disciplina' => $arr[0],
+                'id_professor' => $arr[1],
+            ]);
+            
+        }
+
+        
         return redirect()->route('vinculos.index');
     }
 
